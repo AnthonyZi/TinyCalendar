@@ -22,8 +22,6 @@ public:
         setSecondName(std::string pname);
         setDate(int year, int month, int day);
         setPersonalId(std::string pid);
-
-        std::string getString();
 }
 
 std::ostream& operator<< (std::osteream&, const Person::Person&);

@@ -44,10 +44,6 @@ void Person::setPersonalId(std::string pid)
         personalID = pid;
 }
 
-std::string Person::getString()
-{
-}
-
 std::ostream& operator<< (std::ostream& pstream, const Person& pperson)
 {
         pstream << pperson.getName();
