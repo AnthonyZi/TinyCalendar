@@ -1,4 +1,9 @@
+#ifndef PERSON_H
+#define PERSON_H
+
 #include <time.h>
+#include <iostream>
+#include <iomanip>
 
 class Person
 {
@@ -10,18 +15,23 @@ private:
         struct tm birthdate;
 
         //personal Identifaction
-        std::string personalId;
+        std::string personalID;
 public:
         Person();
 
-        struct tm getDate();
+        struct tm* getDate();
         std::string getName();
+        std::string getFirstName();
+        std::string getSecondName();
+        std::string getPersonalID();
 
-        setName(std::string pname);
-        setFirstName(std::string pname);
-        setSecondName(std::string pname);
-        setDate(int year, int month, int day);
-        setPersonalId(std::string pid);
-}
+        void setName(std::string pname);
+        void setFirstName(std::string pname);
+        void setSecondName(std::string pname);
+        void setDate(int year, int month, int day);
+        void setPersonalID(std::string pid);
+};
 
-std::ostream& operator<< (std::osteream&, const Person::Person&);
+std::ostream& operator<< (std::ostream&, Person& pperson);
+
+#endif

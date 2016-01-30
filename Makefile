@@ -3,14 +3,14 @@ CC = gcc
 CXX = g++
 
 ##################
-CFLAGS = -Wall -g -O3
+CFLAGS = -Wall -g -O3 -std=c++11
 CXXFLAGS = $(CFLAGS)
-LDFLAGS = -L/usr/lib/arm-linux-gnueabihf/ -lpng -lz
+LDFLAGS =
 
-NAME = png
+NAME = tinycal
 
 CSOURCE =
-CPPSOURCE = 
+CPPSOURCE = main.cpp person.cpp userio.cpp fileio.cpp
 
 #################
 
@@ -26,10 +26,9 @@ OBJS += $(patsubst $.c, %.o, $(filter %.c, $(CSOURCE)))
 default : $(NAME)
 	$(MAKE) $(NAME)
 
-run :
+r :
 	reset
 	$(MAKE) $(NAME)
-	./$(NAME) $(IMAGE)
 
 #all :
 #	$(MAKE) $(NAME)	
