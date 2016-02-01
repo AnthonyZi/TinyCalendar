@@ -55,9 +55,13 @@ std::string Person::getString()
                 result += secondName;
                 result += " ";
         }
-        result += "(";
-        result += personalID;
-        result += ")\n";
+        if(personalID.compare(""))
+        {
+                result += "~";
+                result += personalID;
+                result += "~";
+        }
+        result += "\n";
         return result;
 }
 
@@ -97,6 +101,8 @@ std::ostream& operator<< (std::ostream& pstream, Person& pperson)
         pstream << pperson.getName() << ", " << pperson.getFirstName() << " " << pperson.getSecondName();
         if(pperson.getSecondName().compare(""))
                 pstream << " ";
-        pstream << "(" << pperson.getPersonalID() << ")" << std::endl;
+        if(pperson.getPersonalID().compare(""))
+                pstream << "~" << pperson.getPersonalID() << "~";
+        pstream << std::endl;
         return pstream;
 }
