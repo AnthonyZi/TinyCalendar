@@ -14,7 +14,7 @@ ADDITIONALCFLAGS = -pthread -I/usr/include/gtkmm-3.0 -I/usr/lib/i386-linux-gnu/g
 NAME = tinycal
 
 CSOURCE =
-CPPSOURCE = main.cpp person.cpp userio.cpp fileio.cpp tinywindow.cpp
+CPPSOURCE = main.cpp person.cpp consoleio.cpp fileio.cpp tinywindow.cpp
 
 #################
 
