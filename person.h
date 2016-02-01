@@ -24,6 +24,7 @@ public:
         std::string getFirstName();
         std::string getSecondName();
         std::string getPersonalID();
+        std::string getString();
 
         void setName(std::string pname);
         void setFirstName(std::string pname);

@@ -37,6 +37,30 @@ std::string Person::getPersonalID()
         return personalID;
 }
 
+std::string Person::getString()
+{
+        std::string result;
+        result = std::to_string(birthdate.tm_mday);
+        result += ".";
+        result += std::to_string(birthdate.tm_mon+1);
+        result += ".";
+        result += std::to_string(birthdate.tm_year+1900);
+        result += " : ";
+        result += name;
+        result += ", ";
+        result += firstName;
+        result += " ";
+        if(secondName.compare(""))
+        {
+                result += secondName;
+                result += " ";
+        }
+        result += "(";
+        result += personalID;
+        result += ")\n";
+        return result;
+}
+
 void Person::setName(std::string pname)
 {
         name = pname;

@@ -3,6 +3,7 @@
 void consoleUI(std::vector<Person*>* pvector)
 {
         std::cout << "type 'help' for an overview" << std::endl;
+        list(pvector, false, false);
         while(1)
         {
                 std::string command;
@@ -94,43 +95,17 @@ void delPerson(std::vector<Person*>* pvector, bool console)
                 list(pvector, true);
 }
 
-bool nameCompare(Person* p1, Person* p2)
-{
-        if(p1->getName().compare(p2->getName()) < 0)
-                return true;
-        return false;
-}
-
-bool dateCompare(Person* p1, Person* p2)
-{
-        struct tm c1, c2;
-        time_t now;
-        time(&now);
- 
-        c1 = *(localtime(&now));
-        c2 = *(localtime(&now));
-
-        c1.tm_mday = p1->getDate()->tm_mday;
-        c1.tm_mon = p1->getDate()->tm_mon;
-        c2.tm_mday = p2->getDate()->tm_mday;
-        c2.tm_mon = p2->getDate()->tm_mon;
-
-        if(difftime(mktime(&c1), mktime(&c2)) < 0)
-                return true;
-        return false;
-}
-
 void list(std::vector<Person*>* pvector, bool nameSort ,bool all, bool withID, bool console)
 {
         if(console)
                 system("clear");
         if(nameSort)
-                std::sort(pvector->begin(), pvector->end(), nameCompare);
+                sortPersons(pvector, 0);
         else
-                std::sort(pvector->begin(), pvector->end(), dateCompare);
-
+                sortPersons(pvector, 1);
 
         int lastperson;
+        int firstperson = 0;
         if(all)
                 lastperson = pvector->size();
         else
@@ -148,13 +123,16 @@ void list(std::vector<Person*>* pvector, bool nameSort ,bool all, bool withID, b
                         compare.tm_mday = (*pvector)[lastperson]->getDate()->tm_mday;
                         compare.tm_mon = (*pvector)[lastperson]->getDate()->tm_mon;
 
+                        if(difftime(mktime(&compare), now) < 0)
+                                firstperson++;
+
                         if(difftime(mktime(&compare), now) < 2592000)
                                 lastperson++;
                         else
                                 break;
                 }
         }
-        for(int i = 0; i < lastperson; i++)
+        for(int i = firstperson; i < lastperson; i++)
         {
                 if(withID)
                         std::cout << "[" << i << "] ";
@@ -178,6 +156,9 @@ void save(std::vector<Person*>* pvector, bool console)
         std::string input;
         std::cout << "filename: ";
         std::cin >> input;
+
+        if(input.compare("-") == 0)
+                input = "/home/zmann/windowreminder";
 
         writeFile(pvector, input);
         

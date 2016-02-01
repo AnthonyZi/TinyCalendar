@@ -3,10 +3,10 @@
 
 #include <iostream>
 #include <vector>
-#include <algorithm>
 #include <cstdlib>
 #include "person.h"
 #include "fileio.h"
+#include "sortpersons.h"
 
 void consoleUI(std::vector<Person*>* pvector);
 std::string getCommand();
