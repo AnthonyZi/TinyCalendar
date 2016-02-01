@@ -1,7 +1,7 @@
 A tiny console-calendar with a Terminal-Interface
 The attempt was do develope it within 30min
 
-Standard-File is /home/zmann/windowreminder
+        Standard-File is /home/zmann/.windowreminder
 -> autoread with startup
 -> autosave with parameter "-"
 

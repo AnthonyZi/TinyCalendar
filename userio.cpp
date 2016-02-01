@@ -158,7 +158,7 @@ void save(std::vector<Person*>* pvector, bool console)
         std::cin >> input;
 
         if(input.compare("-") == 0)
-                input = "/home/zmann/windowreminder";
+                input = "/home/zmann/.windowreminder";
 
         writeFile(pvector, input);
         

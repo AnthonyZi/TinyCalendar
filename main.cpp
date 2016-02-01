@@ -8,7 +8,7 @@
 int main(int argc, char *argv[])
 {
         std::vector<Person*> persons;
-        readFile("/home/zmann/windowreminder", &persons);
+        readFile("/home/zmann/.windowreminder", &persons);
 
         if(argc == 1)
         {
