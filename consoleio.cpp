@@ -1,4 +1,4 @@
-#include "userio.h"
+#include "consoleio.h"
 
 void consoleUI(std::vector<Person*>* pvector)
 {
@@ -115,7 +115,7 @@ void addPerson(std::vector<Person*>* pvector)
                 input = "";
         newPerson->setSecondName(input);
 
-        std::cout << "Birthdate: ";
+        std::cout << "Birthdate: " << std::endl;
         std::cout << "day: ";
         std::cin >> int1;
         std::cout << "month: ";
